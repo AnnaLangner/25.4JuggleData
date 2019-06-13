@@ -1,9 +1,13 @@
 var express = require('express');
-
+bodyParser = require('body-parser');
 var app = express();
+app.use(express.static(`${__dirname}/assets`));
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
-    res.sendFile('/index.html');
+    console.log('takiej ścieżki będzie szukał Express: ',  __dirname + '/assets/index.html')
+    res.sendFile(__dirname + '/assets/index.html');
+
 });
 
 app.get('/userform', function (req, res) {
